@@ -2,8 +2,9 @@ import productContext from "./context"
 import Product from "./product"
 import { useContext, useEffect, useState } from "react"
 const Clothes = () =>{
-    const products = useContext(productContext)
+    const {products,addToCart} = useContext(productContext)
     const [clothes,setClothes] = useState([products])
+    
     useEffect(()=>{
         setClothes(products.filter((item)=>item.thread))
     },[])
@@ -16,7 +17,7 @@ const Clothes = () =>{
                 </div>
             <div className="row">
                 {clothes.map((item)=>{
-                    return <Product key={item.id} title={item.title} price={item.price} img={item.img}/>
+                    return <Product key={item.id} id={item.id} add={()=>addToCart(item)} title={item.title} price={item.price} img={item.img}/>
                 })}
             </div>
         </div>

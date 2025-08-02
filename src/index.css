@@ -20,6 +20,9 @@ a{
 .login a,.signup a,header .offcanvas{
   color: black !important;
 }
+.text-gold{
+  color: gold;
+}
 .large{
   font-size: large;
 }
@@ -32,6 +35,10 @@ a{
 .border-down{
   border-bottom: 1px solid gray;
 }
-
+.dd{
+  position: absolute;
+  top: 54px;
+  left: 179px;
+}
 /* #login{
   height: 90vh} */
