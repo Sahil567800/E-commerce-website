@@ -24,7 +24,7 @@ const Header = () => {
     }
     return (
         <>
-            <header className="bg-black py-3 text-white">
+            <header className="bg-black py-3 text-white sticky-top">
                 <div className="container">
                     <div className="row">
                         <div className="col-1">
@@ -40,7 +40,7 @@ const Header = () => {
                                             <Link to='/contact'><li className="my-2 text-black">Contact Us</li></Link>
                                             <Link to='/collection'><li className="my-2 text-black">Collection</li></Link>
                                         </ul>
-                                        <button className="btn bg-black text-white px-4" type="button">Login</button>
+                                        <Link to={'/login'}><button className="btn bg-black text-white px-4" type="button">Login</button></Link>
                                     </div>
                                 </div>
                                 <button className="btn bg-black text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
@@ -52,7 +52,7 @@ const Header = () => {
                         <div className="col-3">
                             <div className="search text-center large">
                                 {!searchBar ? <FaMagnifyingGlass onClick={() => setSearchBar(true)} /> :
-                                    <div className="searchbar d-flex"><input type="text" onChange={
+                                    <div className="searchbar d-flex"><input type="text" className="px-2" onChange={
                                         (e) => { setInput(e.target.value) }} placeholder="Search Products" />
                                         <button className="btn bg-gray" onClick={() => setSearchBar(false)}><FaTimes /></button></div>
                                 }

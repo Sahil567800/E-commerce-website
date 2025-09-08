@@ -18,7 +18,7 @@ import cloth7 from "./assets/img/clothes/imgcard7.jpeg"
 import cloth8 from "./assets/img/clothes/imgcard8.jpeg"
 import cloth9 from "./assets/img/clothes/imgcard9.jpeg"
 import cloth10 from "./assets/img/clothes/imgcard10.jpeg"
-import shoe1 from "./assets/img/shoes/shoe1.avif"
+import shoe1 from "./assets/img/shoes/shoe1.jpeg"
 import shoe2 from './assets/img/shoes/shoe2.avif'
 // import shoe3 from './assets/img/shoes/shoe3.avif'
 import shoe4 from './assets/img/shoes/shoe4.avif'
@@ -28,6 +28,8 @@ import shoe7 from './assets/img/shoes/shoe7.avif'
 import shoe8 from './assets/img/shoes/shoe8.avif'
 import shoe9 from './assets/img/shoes/shoe9.avif'
 import shoe10 from './assets/img/shoes/shoe10.avif'
+import shoe11 from './assets/img/shoes/shoe11.jpg'
+import shoe12 from './assets/img/shoes/shoe12.jpg'
 import { BestSeller } from './components/bestseller'
 import { Contact } from './components/contact'
 import { Collection } from './components/collection'
@@ -61,7 +63,7 @@ function App() {
     },
     {
       title: "WOMEN'S purple Top", price: '199', img: cloth6, id: '6', thread: true, category: "WOMEN",
-      subCategory: "CLOTHES"
+      subCategory: "CLOTHES", bestSeller: true
     },
     {
       title: "MEN'S blue T-shirt", price: '239', img: cloth7, id: '7', thread: true, bestSeller: true, category: "MEN",
@@ -81,7 +83,7 @@ function App() {
     },
     {
       title: "WOMEN'S TRAINERS STREET ICON", price: '299', img: shoe1, category: "WOMEN",
-      subCategory: "SHOES",id:'11'
+      subCategory: "SHOES", id: '11'
     },
     {
       title: "MEN'S COURT VISON LOW NEXT SNEAKERS", price: '399', img: shoe2, id: '12', category: "MEN",
@@ -113,26 +115,38 @@ function App() {
     {
       title: "WOMEN'S PROMINA WALKING SHOES2", price: '199', img: shoe10, id: '18', category: "WOMEN",
       subCategory: "SHOES"
+    },
+    {
+      title: "CAS 105 Sneakers for Women", price: '399', img: shoe11, id: '19', category: "WOMEN",
+      subCategory: "SHOES", bestSeller: true
+    },
+     {
+      title: "Women's Cute Sports Running Shoes,", price: '399', img: shoe12, id: '20', category: "WOMEN",
+      subCategory: "SHOES", bestSeller: true
     }
 
 
   ]
-  const [cartItems,setCartItems] = useState([])
-  const [cardTotal,setCardTotal]=useState(0)
-  const addToCart=(product)=>{
-          setCartItems((prev)=>[...prev,product])
-          console.log(cartItems)
-      }
-      const removeFromCart=(id)=>{
-        console.log(id,'id')
-        setCartItems((prev)=>prev.filter((item)=>item.id!==id))
-          console.log(cartItems)
-      }
-      
+  const [cartItems, setCartItems] = useState([])
+  const [cardTotal, setCardTotal] = useState(0)
+  const addToCart = (product) => {
+    if (cartItems.includes(product)) {
+      setCount(count + 1)
+      return
+    }
+    setCartItems((prev) => [...prev, product])
+    console.log(cartItems)
+  }
+  const removeFromCart = (id) => {
+    console.log(id, 'id')
+    setCartItems((prev) => prev.filter((item) => item.id !== id))
+    console.log(cartItems)
+  }
   
+  const [count, setCount] = useState(0)
   return (
     <>
-      <productContext.Provider value={{products,cartItems,setCartItems,addToCart,removeFromCart,cardTotal,setCardTotal}}>
+      <productContext.Provider value={{ products, cartItems, setCartItems, addToCart, removeFromCart, cardTotal, setCardTotal, count, setCount }}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Layout />}>
@@ -143,8 +157,8 @@ function App() {
               <Route path='/cart' element={<Cart />}></Route>
               <Route path='/login' element={<Login />}></Route>
               <Route path='/signup' element={<Signup />}></Route>
-              <Route path='/delivery' element={<Delivery/>}></Route>
-              <Route path='/selectedProduct/:productId'element={<SelectedProduct/>}></Route>
+              <Route path='/delivery' element={<Delivery />}></Route>
+              <Route path='/selectedProduct/:productId' element={<SelectedProduct />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>

@@ -35,7 +35,7 @@ export const SelectedProduct = () => {
                             <FaStar className='text-gold'/>
                             <FaStar className='text-gold'/>
                         </div>
-                        <h4>{productData.price}</h4>
+                        <h4>${productData.price}</h4>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus quidem, odit rem omnis amet vero quisquam! Eos suscipit totam quibusdam veritatis, deleniti maiores repellendus cum nam quis earum natus animi labore fuga. Iste?</p>
                         <h5>Selct Size</h5>
                         <div className="my-3">

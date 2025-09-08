@@ -42,3 +42,6 @@ a{
 }
 /* #login{
   height: 90vh} */
+  .delivery input{
+    width: 325px;
+  }

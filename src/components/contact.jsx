@@ -2,10 +2,10 @@ import contactImg from "../assets/img/contact-img.jpeg"
 export const Contact = () =>{
     return(
         <>
-         <section id="contact" className="py-5">
+         <section id="contact" className="py-4">
                     <div className="container">
                         <div className="row">
-                            <h1 className="my-3"> Contact US</h1>
+                            <h1 className="my-4"> Contact US</h1>
                         </div>
                         <div className="row">
                            <div className="col-md-6">
@@ -15,8 +15,10 @@ export const Contact = () =>{
                            </div>
                            <div className="col-md-6">
                             <div className="contact-text">
-                                <h5 className="fw-bold">SSTORE</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae harum perspiciatis, amet ad itaque, molestias exercitationem voluptas natus unde, excepturi necessitatibus! Ipsa, delectus sapiente. Aut veniam excepturi veritatis quidem, quos voluptate qui animi inventore facilis eos ipsum iusto numquam explicabo dicta sint! Veritatis magni illo neque maiores vel id! Ipsa distinctio libero nemo suscipit minima repellendus recusandae molestias, delectus fugit tenetur nisi ea rerum labore quaerat provident? Quasi obcaecati porro, quidem explicabo deserunt cum vitae quo totam!</p>
+                                <h5 className="fw-bold"> Our Location</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa alias consequuntur commodi iusto, quam reiciendis deserunt velit sint possimus voluptatibus.</p>
+                                <p>tel:-123456790</p>
+                                <p>sahiladmin@gmail.com</p>
                                 <h5 className="fw-bold">Disclaimer</h5>
                                 <p>This is Sahil Khan and this is not a real store this is just a pratice project
                                     for my MERN Stack Web Development. any product shown here does not belongs To me.
