@@ -12,7 +12,7 @@ const Shoes = () => {
 
     return (
         <>
-            <section id="shoeSec" className="py-5 bg-gray">
+            <section id="shoeSec" className="py-5 ">
                 <div className="container">
                     <div className="row"><h1 className="my-3">Shoes Collection</h1></div>
                     <div className="row">

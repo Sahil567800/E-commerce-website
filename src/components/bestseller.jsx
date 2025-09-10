@@ -9,7 +9,7 @@ export const BestSeller = () => {
     },[])
     return (
         <>
-            <section id="best-seller" className="py-3 bg-gray">
+            <section id="best-seller" className="py-3">
                 <div className="container">
                     <div className="row"> <h1 className="my-3">Best Sellers</h1></div>
                     <div className="row">
