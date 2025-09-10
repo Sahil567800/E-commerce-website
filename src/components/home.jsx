@@ -6,8 +6,8 @@ const Home = ()=>{
     return(
         <>
         <Banner/>
-        <Shoes></Shoes>
         <Clothes></Clothes>
+        <Shoes></Shoes>
         <BestSeller/>
         </>
 
