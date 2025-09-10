@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import productContext from './context'
 export const SelectedProduct = () => {
     const {productId} = useParams()
-    const {products} = useContext(productContext) 
+    const {products,addToCart} = useContext(productContext) 
     const [productData,setProductData] = useState('')
 
     const FetchProductData = () =>{

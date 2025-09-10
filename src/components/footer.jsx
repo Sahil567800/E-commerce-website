@@ -9,8 +9,8 @@ const Footer = () => {
             <footer className="bg-black text-white pt-3">
                 <div className="container">
                     <div className="row border-down">
-                        <div className="col-md-3">
-                            <div className='list'>
+                        <div className="col-md-3 col-6">
+                            <div className='list my-2'>
                                 <div className="heading" > <h3>SUPPORT </h3></div>
                                 <ul className="p-0">
                                     <li className="my-2">Contact us</li>
@@ -25,8 +25,8 @@ const Footer = () => {
                         </div>
 
 
-                        <div className="col-md-3">
-                            <div className="">
+                        <div className="col-md-3 col-6">
+                            <div className="my-2">
                                 <div className=" "><h3>ABOUT </h3></div>
                                 <ul className="p-0">
                                     <li className="my-2">Company</li>
@@ -40,8 +40,8 @@ const Footer = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-3">
-                            <div className="" > <h3>PAGES</h3></div>
+                        <div className="col-md-3 col-6">
+                            <div className="my-2" > <h3>PAGES</h3></div>
                             <ul className="p-0">
                                 <Link to='/'><li className="my-2">Home</li></Link>   
                                 <Link to='/about'><li className="my-2">About Us</li></Link>  
@@ -49,10 +49,10 @@ const Footer = () => {
                                 <Link to='/collection'><li className="my-2">Collection</li></Link>  
                             </ul>
                         </div>
-                        <div className="col-md-3">
-                            <div className="">
+                        <div className="col-md-3 col-6">
+                            <div className="my-2">
                                 <div className="" > <h3>STAY UPTO DATE </h3></div>
-                                <ul className="">
+                                <ul className="p-0">
                                     <li className="my-2 large">
                                         <FaFacebook className="align-self-center mx-2" /> Facebook
                                     </li>

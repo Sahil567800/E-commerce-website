@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 // import { useEffect,useContext } from "react";
 import productContext from "./context";
 const Product = ({ title, price, img, id, add }) => {
-
     return (
         <>
-            <div className=" col-6 col-sm-6 col-md-4 col-lg-3 my-2">
+            <div className='col-6 col-sm-6 col-md-4 col-lg-3 my-2'>
                 <div className="shoe my-3 bg-white">
 
                     <div className="my-2">

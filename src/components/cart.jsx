@@ -20,24 +20,24 @@ export const Cart = () => {
     const Count =()=>{
         return(
             <>
-             <div className="count mx-5">
-                        <span onClick={()=>setCount(count-1)}><FaMinus/></span>
+             <div className="count">
+                        <span onClick={()=>setCount(count-1)} className="mx-3"><FaMinus/></span>
                         <span>{count}</span>
-                        <span onClick={()=>setCount(count+1)}><FaPlus/></span>
+                        <span onClick={()=>setCount(count+1)} className="mx-3"><FaPlus/></span>
                     </div></>
         )
     }
     const CartProduct = ({ title, price, img, id }) => {
         return (
             <>
-                <div className="d-flex align-items-center justify-content-around my-3">
-                    <img src={img} alt={title} width={'10%'} />
-                    <div className="m-3">
+                <div className="row  align-items-center my-3">
+                 <div className="col-md-3 col-3 col-sm-3 my-2"><img src={img} alt={title} width={'50%'} /></div>   
+                  <div className="col-md-5 col-9 col-sm-9 my-2"><div className="m-3">
                         <h3>{title}</h3>
                         <h5>${price}</h5>
-                    </div>
-                    <Count/>
-                    <span className="mx-5" onClick={() => removeFromCart(id)} ><FaTrashCan /></span>
+                    </div></div>  
+                    <div className="col-md-3 col-4 col-sm-4 my-2"><Count/></div>
+                    <div className="col-md-1 col-2 col-sm-2 my-2"><span className="" onClick={() => removeFromCart(id)} ><FaTrashCan /></span></div>
                 </div>
             </>
         )

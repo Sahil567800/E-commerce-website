@@ -84,11 +84,11 @@ export const Collection = () => {
             <section id='collection' className="py-5">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-2">
+                        <div className="col-md-3 col-lg-2 ">
                             <div className="left-sec ">
-                                <div className="filter ">
+                                <div className="filter">
                                     <h2>Filters</h2>
-                                    <div className="category my-2">
+                                    <div className="category d-inline-block d-sm-inline-block d-md-block d-lg-block my-2 mx-2">
                                         <h5>Category</h5>
                                         <div className="checkbox">
                                             <input type="checkbox" onChange={toggleCategory}
@@ -102,7 +102,7 @@ export const Collection = () => {
                                             <label htmlFor="Women">Women</label>
                                         </div>
                                     </div>
-                                    <div className="subcategory my-2">
+                                    <div className="subcategory my-2 mx-2 d-inline-block d-sm-inline-block d-md-block d-lg-block">
                                         <h5>SubCategory</h5>
                                         <div className="checkbox">
                                             <input type="checkbox" value={'CLOTHES'}
@@ -115,7 +115,7 @@ export const Collection = () => {
                                             <label htmlFor="Men">Shoes</label>
                                         </div>
                                     </div>
-                                    <div className="price my-2">
+                                    <div className="price my-2 d-inline-block d-sm-inline-block d-md-block d-lg-block">
                                         <select name="price" id="price" onChange={handlePriceChange}>
                                             <option value="default">Default Price</option>
                                             <option value="lowest">Lowest to Highest</option>
@@ -125,7 +125,7 @@ export const Collection = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-10">
+                        <div className="col-md-9 col-lg-10 ">
                             <div className="right-sec">
                                 <div className="row"> <h1 className="my-3">Collection</h1></div>
                                 <div className="row">
