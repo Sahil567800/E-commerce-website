@@ -1,18 +1,25 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { ToastContainer, toast } from "react-toastify"
+
 export const Signup = () => {
     const [inputs, setInputs] = useState({ email: '', password: '', username: '' })
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value })
     }
-    const handleSignup=async()=>{
-        const req = await fetch('http://localhost:3000/api/user/register',{
-            method:"POST",
-            headers:{'content-type':"application/json"},
-            body:JSON.stringify(inputs)
+    const navigate = useNavigate()
+    const handleSignup = async () => {
+        const req = await fetch('http://localhost:3000/api/user/register', {
+            method: "POST",
+            headers: { 'content-type': "application/json" },
+            body: JSON.stringify(inputs)
         })
         const res = await req.json()
-        console.log(res)
+        if (!res.ok) {
+            return toast.error(res.message)
+        }
+        toast.success(res.message)
+        navigate('/login')
     }
     return (
         <>
@@ -36,6 +43,7 @@ export const Signup = () => {
                     </div>
                 </div>
             </section>
+            <ToastContainer></ToastContainer>
         </>
     )
 }

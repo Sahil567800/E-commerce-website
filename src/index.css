@@ -6,7 +6,9 @@
   list-style: none;
   text-decoration: none;
 }
-
+.border-gray{
+  border: 1px solid gray;
+}
 .searchbar button {
   border-radius: 0 5px 5px 0;
 }
@@ -66,6 +68,28 @@ header .offcanvas {
   height: 90vh} */
 .delivery input {
   width: 325px;
+}
+.dashboard li{
+  border: 1px solid black;
+  border-right: none;
+  border-radius: 15px 0 0 15px;
+}
+.dashboard li svg{
+  border: 2px solid black;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  padding: 2px;
+}
+.dashboard{
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+.admin-orders svg{
+font-size: xx-large;
+border: 1px solid gray;
+padding: 3px;
 }
 
 @media screen and (max-width:768px) {

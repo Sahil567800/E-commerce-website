@@ -1,6 +1,6 @@
 import { useState ,useContext} from "react"
 import Product from "./product"
-const myOrder = () => {
+const MyOrders = () => {
     const [Orders,setOrders] = useState([])
 
     const fetchOrders = async () => {
@@ -29,3 +29,4 @@ const myOrder = () => {
         </>
     )
 }
+export default MyOrders

@@ -45,7 +45,7 @@ export const SelectedProduct = () => {
                             <button className='btn bg-gray text-black mx-1 px-3'>XL</button>
                             <button className='btn bg-gray text-black mx-1 px-3'>XXL</button>
                         </div>
-                        <button className='btn bg-black text-white'>ADD TO CART</button>
+                        <button className='btn bg-black text-white' onClick={()=>{addToCart(productData)}} >ADD TO CART</button>
                         <hr />
                         <h6>100% Original Product</h6>
                         <h6 className=''>Cash on Delivery is available on this Product</h6>

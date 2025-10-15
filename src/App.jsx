@@ -39,6 +39,10 @@ import { Cart } from './components/cart'
 import { Delivery } from './components/delivery'
 import { SelectedProduct } from './components/selectedProduct'
 import { useEffect, useState } from 'react'
+import MyOrders from './components/myOrders'
+import { ForgotPassword } from './components/forgot'
+import AdminLogin from './components/adminLogin'
+import AdminPanel from './components/adminPanel'
 function App() {
   const products = [
     {
@@ -120,7 +124,7 @@ function App() {
       title: "CAS 105 Sneakers for Women", price: '399', img: shoe11, id: '19', category: "WOMEN",
       subCategory: "SHOES", bestSeller: true
     },
-     {
+    {
       title: "Women's Cute Sports Running Shoes,", price: '399', img: shoe12, id: '20', category: "WOMEN",
       subCategory: "SHOES", bestSeller: true
     }
@@ -142,7 +146,7 @@ function App() {
     setCartItems((prev) => prev.filter((item) => item.id !== id))
     console.log(cartItems)
   }
-  
+
   const [count, setCount] = useState(0)
   return (
     <>
@@ -159,7 +163,11 @@ function App() {
               <Route path='/signup' element={<Signup />}></Route>
               <Route path='/delivery' element={<Delivery />}></Route>
               <Route path='/selectedProduct/:productId' element={<SelectedProduct />}></Route>
+              <Route path='/forgot' element={<ForgotPassword />}></Route>
+              <Route path='myOrders' element={<MyOrders />}></Route>
             </Route>
+            <Route path='/admin' element={<AdminLogin />}></Route>
+            <Route path='/admin/adminPanel' element={<AdminPanel/>}></Route>
           </Routes>
         </BrowserRouter>
       </productContext.Provider>
