@@ -3,11 +3,15 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
+import productContext from "./context";
+import { useContext } from "react";
 export const Login = () => {
+    
     const [input, setInput] = useState({ email: '', password: '' })
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
     }
+    const {user,setUser} = useContext(productContext)
     const navigate = useNavigate()
     
     const handleLogin = async () => {
@@ -22,12 +26,15 @@ export const Login = () => {
             body: JSON.stringify(input)
         })
         const res = await req.json()
-        console.log(res.data.token)
         if (!res.data.token) {
             toast.error(res.message);
             return;
         }
-        localStorage.setItem('token', res.token)
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('user', res.data.user)
+        console.log(res.data,'data')
+        setUser(res.data.user)
+        console.log(user,'user')
         navigate('/')
     }
     catch(error){

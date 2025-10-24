@@ -13,8 +13,8 @@ export const BestSeller = () => {
                 <div className="container">
                     <div className="row"> <h1 className="my-3">Best Sellers</h1></div>
                     <div className="row">
-                    {bestSeller.map((item)=>{
-                        return <Product title={item.title} id={item.id} add={()=>addToCart(item)} img={item.img} price={item.price}/>
+                    {bestSeller.map((item,index)=>{
+                        return <Product key={item.id || index} title={item.title} id={item.id} add={()=>addToCart(item)} img={item.img} price={item.price}/>
                     })}
                     </div>
                 </div>

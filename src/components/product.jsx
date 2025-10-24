@@ -5,7 +5,7 @@ const Product = ({ title, price, img, id, add }) => {
     return (
         <>
             <div className='col-6 col-sm-6 col-md-4 col-lg-3 my-2 bg-white'>
-                <div className="shoe my-3 bg-white my-3">
+                <div className="shoe my-3 bg-white my-4">
 
                     <div className="my-3">
                         <Link to={`/selectedProduct/${id}`}>
@@ -15,7 +15,7 @@ const Product = ({ title, price, img, id, add }) => {
                     <h4 className="my-3">{title}</h4>
                     <div className="d-flex justify-content-between my-2 ">
                         <h5 className="my-2 fw-bold align-self-center">${price}</h5>
-                        <button className="btn bg-black text-white" onClick={add} >Add TO Cart</button>
+                        <button className="btn bg-black text-white" onClick={add} >Add To Cart</button>
                     </div>
 
                 </div>

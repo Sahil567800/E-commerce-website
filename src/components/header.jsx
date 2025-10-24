@@ -3,25 +3,35 @@ import { FaTimes } from "react-icons/fa"
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import productContext from './context'
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const Header = () => {
     const [searchBar, setSearchBar] = useState(false)
+    const [show,setShow] = useState(false)
     const [input, setInput] = useState('')
     const [matchedProducts, setMatchedProducts] = useState([])
-    const {products} = useContext(productContext)
+    const { products, user,setUser } = useContext(productContext)
 
-   
+
     const handleSearch = () => {
         const searchedProduct = products.filter(item => item.title.toLowerCase().includes(input.toLowerCase().trim()))
         setMatchedProducts(searchedProduct)
     }
-     useEffect(() => {
+    const handleLogout=()=>{
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        setUser('')
+        toast.success("Logged out successfully")
+    }
+    useEffect(() => {
         handleSearch()
     }, [input])
-    const Li = ({ title,id }) => {
+    const Li = ({ title, id }) => {
         return (<>
-           <Link to={`selectedProduct/${id}`}> <li className="px-1 py-1 text-black bg-white border-bottom">{title}</li></Link>
+            <Link to={`selectedProduct/${id}`}> <li className="px-1 py-1 text-black bg-white border-bottom">{title}</li></Link>
         </>)
     }
+    console.log(user)
     return (
         <>
             <header className="bg-black py-3 text-white sticky-top">
@@ -38,7 +48,7 @@ const Header = () => {
                                             <Link to='/'><li className="my-2 text-black" data-bs-dismiss='offcanvas'>Home</li></Link>
                                             <Link to='/about'><li className="my-2 text-black" data-bs-dismiss='offcanvas'>About Us</li></Link>
                                             <Link to='/contact'><li className="my-2 text-black" data-bs-dismiss='offcanvas'>Contact Us</li></Link>
-                                            <Link to='/collection'><li className="my-2 text-black"data-bs-dismiss='offcanvas'>Collection</li></Link>
+                                            <Link to='/collection'><li className="my-2 text-black" data-bs-dismiss='offcanvas'>Collection</li></Link>
                                         </ul>
                                         <Link to={'/login'}><button className="btn bg-black text-white px-4" type="button" data-bs-dismiss='offcanvas'>Login</button></Link>
                                     </div>
@@ -57,7 +67,7 @@ const Header = () => {
                                         <button className="btn bg-gray" onClick={() => setSearchBar(false)}><FaTimes /></button></div>
                                 }
                                 {searchBar && input && <ul className="dd">
-                                    {matchedProducts.map((item) => {return <Li key={item.id} id={item.id} title={item.title}></Li>})}
+                                    {matchedProducts.map((item) => { return <Li key={item.id} id={item.id} title={item.title}></Li> })}
 
                                 </ul>}
                             </div>
@@ -75,13 +85,18 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="col-2">
-                            <div className="user text-center large">
-                                <Link to='/login'> <FaUser /></Link>
-                            </div>
+                              <div className="user text-center large " onClick={()=>setShow(!show)}>
+                                <FaUser />
+                                <div className={ show?`d-block user-dd px-3`:'d-none '}>
+                                  {user?<p>Log out</p>: <Link to='/login'><p className="text-black">Log in</p></Link> }
+                                    <Link to={'/myorders'}><p className="text-black">My orders</p></Link>
+                                    </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
             </header>
+           <ToastContainer position="top-right" autoClose={2000} ></ToastContainer>
         </>)
 }
 

@@ -17,7 +17,7 @@ const Shoes = () => {
                     <div className="row"><h1 className="my-3">Shoes Collection</h1></div>
                     <div className="row">
                            {shoes.map((item,index)=>{
-                               return <Product key={index} id={item.id} add={()=>addToCart(item)} title={item.title} price={item.price} img={item.img}/>
+                               return <Product key={item.id|| index} id={item.id} add={()=>addToCart(item)} title={item.title} price={item.price} img={item.img}/>
                             })}                    
                     </div>
                 </div>

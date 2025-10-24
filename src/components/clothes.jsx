@@ -16,8 +16,8 @@ const Clothes = () =>{
                 <h1 className="my-3">Threads Collection</h1>
                 </div>
             <div className="row">
-                {clothes.map((item)=>{
-                    return <Product key={item.id} id={item.id} add={()=>addToCart(item)} title={item.title} price={item.price} img={item.img}/>
+                {clothes.map((item,index)=>{
+                    return <Product key={item.id || index} id={item.id} add={()=>addToCart(item)} title={item.title} price={item.price} img={item.img}/>
                 })}
             </div>
         </div>

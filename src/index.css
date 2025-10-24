@@ -31,6 +31,20 @@ a {
   text-decoration: none !important;
 }
 
+.user-dd{
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  background:white;
+  color:black;
+ border: 1px solid gray;
+}
+.user-dd p{
+  border-bottom:1px solid gray  ;
+}
+
+
 .login a,
 .signup a,
 header .offcanvas {
@@ -56,6 +70,7 @@ header .offcanvas {
 .border-down {
   border-bottom: 1px solid gray;
 }
+
 
 .dd {
   position: absolute;
@@ -95,5 +110,8 @@ padding: 3px;
 @media screen and (max-width:768px) {
   #cart img {
     width: 100%;
+  }
+  .user-dd{
+    right: 1%;
   }
 }

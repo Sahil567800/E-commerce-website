@@ -15,7 +15,7 @@ export const Signup = () => {
             body: JSON.stringify(inputs)
         })
         const res = await req.json()
-        if (!res.ok) {
+        if (!req.ok) {
             return toast.error(res.message)
         }
         toast.success(res.message)
