@@ -98,8 +98,8 @@ export const Delivery = () => {
 
                                 <h5 className="my-2">PAYMENT METHOD</h5>
                                 <div className="m-1"> <input type="radio" onClick={() => setPaymentMethod('COD')} name="payment" /> <label htmlFor="CASH ON DELIVERY">CASH ON DELIVERY</label></div>
-                                <div className="m-1"> <input type="radio" name="payment" /> <label htmlFor="UPI">UPI</label></div>
-                                <div className="m-1"><input type="radio" name="payment" /> <label htmlFor="CASH ON DELIVERY">RazorPay</label></div>
+                                {/* <div className="m-1"> <input type="radio" name="payment" /> <label htmlFor="UPI">UPI</label></div>
+                                <div className="m-1"><input type="radio" name="payment" /> <label htmlFor="CASH ON DELIVERY">RazorPay</label></div> */}
 
 
 
