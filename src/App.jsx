@@ -131,33 +131,41 @@ function App() {
 
 
   ]
-  const [cartItems, setCartItems] = useState([])
-  const [cardTotal, setCardTotal] = useState(0)
- const addToCart = (product) => {
-  setCartItems((prev) => {
-    const exists = prev.find((item) => item.id === product.id);
-    if (exists) {
-      // Option 1: Increase quantity instead of ignoring
-      return prev.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-    }
-    // Option 2: Add new product with quantity = 1
-    return [...prev, { ...product, quantity: 1 }];
+  const [cartItems, setCartItems] = useState(() => {
+    const saved = localStorage.getItem("cartItems");
+    return saved ? JSON.parse(saved) : [];
   });
-};
+  const [cardTotal, setCardTotal] = useState(0)
+  const addToCart = (product) => {
+    setCartItems((prev) => {
+      const exists = prev.find((item) => item.id === product.id);
+      if (exists) {
+        // Option 1: Increase quantity instead of ignoring
+        return prev.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      }
+      // Option 2: Add new product with quantity = 1
+      return [...prev, { ...product, quantity: 1 }];
+    });
+  };
 
-const removeFromCart = (id) => {
-  setCartItems((prev) =>
-    prev
-      .map((item) =>
-        item.id === id
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-      .filter((item) => item.quantity > 0) // remove if quantity becomes 0
-  );
-};
+  const removeFromCart = (id) => {
+    setCartItems((prev) =>
+      prev
+        .map((item) =>
+          item.id === id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0) // remove if quantity becomes 0
+    );
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+  
   const [user, setUser] = useState('')
   const [count, setCount] = useState(0)
   return (

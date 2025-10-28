@@ -31,7 +31,7 @@ export const Login = () => {
             return;
         }
         localStorage.setItem('token', res.data.token)
-        localStorage.setItem('user', res.data.user)
+        localStorage.setItem('user', JSON.stringify(res.data.user))
         console.log(res.data,'data')
         setUser(res.data.user)
         console.log(user,'user')
@@ -61,8 +61,8 @@ export const Login = () => {
                         </div>
                     </div>
                 </div>
-            </section>
             <ToastContainer position="top-right" autoClose={2000} />
+            </section>
         </>
     )
 }

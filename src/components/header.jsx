@@ -26,9 +26,16 @@ const Header = () => {
     useEffect(() => {
         handleSearch()
     }, [input])
+    useEffect(()=>{
+        const savedUser = localStorage.getItem("user")
+        const savedToken = localStorage.getItem("token")
+        if(savedToken&&savedToken){
+            setUser(JSON.parse(savedUser))
+        }
+    },[])
     const Li = ({ title, id }) => {
         return (<>
-            <Link to={`selectedProduct/${id}`}> <li className="px-1 py-1 text-black bg-white border-bottom">{title}</li></Link>
+            <Link to={`selectedProduct/${id}`}> <li onClick={()=>{setSearchBar(false)}} className="px-1 py-1 text-black bg-white border-bottom">{title}</li></Link>
         </>)
     }
     console.log(user)
@@ -67,7 +74,7 @@ const Header = () => {
                                         <button className="btn bg-gray" onClick={() => setSearchBar(false)}><FaTimes /></button></div>
                                 }
                                 {searchBar && input && <ul className="dd">
-                                    {matchedProducts.map((item) => { return <Li key={item.id} id={item.id} title={item.title}></Li> })}
+                                    {matchedProducts.map((item) => { return <Li  key={item.id} id={item.id} title={item.title}></Li> })}
 
                                 </ul>}
                             </div>
@@ -85,10 +92,10 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="col-2">
-                              <div className="user text-center large " onClick={()=>setShow(!show)}>
-                                <FaUser />
+                              <div className="user fw-bold text-center large " onClick={()=>setShow(!show)}>
+                                {user?user.username:<FaUser />}
                                 <div className={ show?`d-block user-dd px-3`:'d-none '}>
-                                  {user?<p>Log out</p>: <Link to='/login'><p className="text-black">Log in</p></Link> }
+                                  {user?<p onClick={handleLogout}>Log out</p>: <Link to='/login'><p className="text-black">Log in</p></Link> }
                                     <Link to={'/myorders'}><p className="text-black">My orders</p></Link>
                                     </div>
                             </div> 
