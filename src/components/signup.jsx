@@ -3,13 +3,15 @@ import { useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 
 export const Signup = () => {
+    const apiBase = 'https://e-commerce-server-tcif.onrender.com'
+
     const [inputs, setInputs] = useState({ email: '', password: '', username: '' })
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value })
     }
     const navigate = useNavigate()
     const handleSignup = async () => {
-        const req = await fetch('http://localhost:3000/api/user/register', {
+        const req = await fetch(`https://e-commerce-server-tcif.onrender.com/api/user/register`, {
             method: "POST",
             headers: { 'content-type': "application/json" },
             body: JSON.stringify(inputs)

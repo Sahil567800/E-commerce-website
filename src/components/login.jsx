@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import productContext from "./context";
 import { useContext } from "react";
 export const Login = () => {
-    
+    const apiBase = 'https://e-commerce-server-tcif.onrender.com'
     const [input, setInput] = useState({ email: '', password: '' })
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
@@ -20,7 +20,7 @@ export const Login = () => {
             toast.warn("Please fill input fields")
             return
         }
-        const req = await fetch("http://localhost:3000/api/user/login", {
+        const req = await fetch(`${apiBase}/api/user/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(input)
@@ -61,7 +61,7 @@ export const Login = () => {
                         </div>
                     </div>
                 </div>
-            <ToastContainer position="top-right" autoClose={2000} />
+            <ToastContainer  />
             </section>
         </>
     )
