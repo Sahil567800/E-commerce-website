@@ -5,14 +5,13 @@ import cloth1 from '../assets/img/clothes/imgcard1.jpeg'
 import { FaDotCircle } from "react-icons/fa"
 const MyOrders = () => {
     const [orders, setOrders] = useState([])
-
-
+    const apiBase = 'https://e-commerce-server-tcif.onrender.com'
     const fetchOrders = async () => {
         const token = localStorage.getItem('token')
         if (!token) {
             return toast.warn("Please log in")
         }
-        const req = await fetch('http://localhost:3000/api/order/myOrders', {
+        const req = await fetch(`${apiBase}/api/order/myOrders`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

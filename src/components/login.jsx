@@ -8,39 +8,46 @@ import { useContext } from "react";
 export const Login = () => {
     const apiBase = 'https://e-commerce-server-tcif.onrender.com'
     const [input, setInput] = useState({ email: '', password: '' })
+    const [loading, setLoading] = useState(false)
+
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
     }
-    const {user,setUser} = useContext(productContext)
+    const { user, setUser } = useContext(productContext)
     const navigate = useNavigate()
-    
+
     const handleLogin = async () => {
-        try{
-        if (!input.email || !input.password) {
-            toast.warn("Please fill input fields")
-            return
+        try {
+
+            if (!input.email || !input.password) {
+                toast.warn("Please fill input fields")
+                return
+            }
+            setLoading(true)
+            const req = await fetch(`${apiBase}/api/user/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(input)
+            })
+            const res = await req.json()
+            if (!req.ok || !res.data.token) {
+                toast.error(res.message);
+                return;
+            }
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user', JSON.stringify(res.data.user))
+            console.log(res.data, 'data')
+            setUser(res.data.user)
+            console.log(user, 'user')
+            navigate('/')
         }
-        const req = await fetch(`${apiBase}/api/user/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(input)
-        })
-        const res = await req.json()
-        if (!res.data.token) {
-            toast.error(res.message);
-            return;
+        catch (error) {
+            console.error(error)
+            toast.error(error.message || "Login failed")
         }
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('user', JSON.stringify(res.data.user))
-        console.log(res.data,'data')
-        setUser(res.data.user)
-        console.log(user,'user')
-        navigate('/')
-    }
-    catch(error){
-        console.error(error)
-        toast.error("Something went wrong")
-    }
+        finally{
+            setLoading(false)
+        }
     }
     return (
         <>
@@ -57,11 +64,11 @@ export const Login = () => {
                             </div>
                             <p>Don't have an account? <Link to='/signup'><span>Sign Up</span></Link> </p>
                             <p> <Link to='/forgot'><span>Forgot Password</span></Link> </p>
-                            <button className="btn bg-black text-white px-4 my-1" onClick={handleLogin}>Login</button>
+                            <button disabled={loading} className="btn bg-black text-white px-4 my-1" onClick={handleLogin}>Login</button>
                         </div>
                     </div>
                 </div>
-            <ToastContainer  />
+                <ToastContainer/>
             </section>
         </>
     )

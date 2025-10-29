@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify"
 
 export const Signup = () => {
     const apiBase = 'https://e-commerce-server-tcif.onrender.com'
+    const [loading, setLoading] = useState(false)
 
     const [inputs, setInputs] = useState({ email: '', password: '', username: '' })
     const handleChange = (e) => {
@@ -11,7 +12,9 @@ export const Signup = () => {
     }
     const navigate = useNavigate()
     const handleSignup = async () => {
-        const req = await fetch(`https://e-commerce-server-tcif.onrender.com/api/user/register`, {
+        try{
+             setLoading(true)
+        const req = await fetch(`${apiBase}/api/user/register`, {
             method: "POST",
             headers: { 'content-type': "application/json" },
             body: JSON.stringify(inputs)
@@ -22,6 +25,16 @@ export const Signup = () => {
         }
         toast.success(res.message)
         navigate('/login')
+        
+        }
+        catch(err){
+            console.log(err)
+            toast.error( err.message||"Sign up failed")
+        }
+        finally{
+            setLoading(false)
+        }
+       
     }
     return (
         <>
@@ -40,12 +53,12 @@ export const Signup = () => {
                                 <input type="password" className="px-3 py-1 my-1" placeholder="Password" value={inputs.password} name="password" onChange={handleChange} />
                             </div>
                             <p>Already have an account? <Link to='/login'><span>Login</span></Link> </p>
-                            <button className="btn bg-black text-white px-4 my-1" onClick={handleSignup}>Sign Up</button>
+                            <button disabled={loading} className="btn bg-black text-white px-4 my-1" onClick={handleSignup}>Sign Up</button>
                         </div>
                     </div>
                 </div>
-            </section>
             <ToastContainer></ToastContainer>
+            </section>
         </>
     )
 }

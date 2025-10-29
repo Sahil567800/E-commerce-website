@@ -3,6 +3,8 @@ import productContext from "./context"
 import { ToastContainer, toast } from "react-toastify"
 export const Delivery = () => {
     const { cardTotal, cartItems, user } = useContext(productContext)
+    const [loading, setLoading] = useState(false)
+    const apiBase = 'https://e-commerce-server-tcif.onrender.com'
     const [data, setdata] = useState({
         fullName: '',
         email: user.email,
@@ -20,6 +22,12 @@ export const Delivery = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        for (const [key, value] of Object.entries(data)) {
+            if (!value.trim()) {  // trim() removes spaces
+                toast.warn(`Please enter your ${key}`);
+                return; // stop submission
+            }
+        }
         if (!paymentMethod) return toast.warn("Please select a payment method");
 
         const token = localStorage.getItem("token");
@@ -36,7 +44,8 @@ export const Delivery = () => {
         };
 
         try {
-            const req = await fetch(`http://localhost:3000/api/order/${paymentMethod}`, {
+            setLoading(true)
+            const req = await fetch(`${apiBase}/api/order/${paymentMethod}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
                 body: JSON.stringify(order)
@@ -48,7 +57,10 @@ export const Delivery = () => {
             toast.success(res.message);
         } catch (err) {
             console.log(err);
-            toast.error("Something went wrong");
+            toast.error(err.message || "Something went wrong");
+        }
+        finally{
+            setLoading(false)
         }
     };
 
